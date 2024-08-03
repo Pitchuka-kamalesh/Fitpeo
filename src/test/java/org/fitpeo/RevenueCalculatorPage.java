@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class RevenueCalculatorPage {
     WebDriver driver;
@@ -19,7 +20,7 @@ public class RevenueCalculatorPage {
     @FindBy(xpath = "//div[@class='MuiBox-root css-j7qwjs']")
     WebElement totalIndividualPatientPerMonth;
 
-    @FindBy(xpath = "//span[@class='MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-sy3s50']/input")
+    @FindBy(xpath = "//input[@type='range']")
     WebElement sliderInput;
 
     @FindBy(id = ":R57alklff9da:")
@@ -61,8 +62,6 @@ public class RevenueCalculatorPage {
         int widthOfSlider = 300;
 
         int activalOffSet = calculateSliderOffset(sliderSetValue, sliderStartingValue, sliderMaxValue, sliderMinValue, widthOfSlider);
-        System.out.println(activalOffSet);
-
         action.clickAndHold(sliderInput).moveByOffset(activalOffSet, 0).perform();
         int sliderChangeValue = Integer.parseInt(testUtils.getAttribute(sliderInput, "value", 10));
         int correction = Math.abs(sliderSetValue - sliderChangeValue);

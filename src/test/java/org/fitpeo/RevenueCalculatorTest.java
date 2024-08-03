@@ -36,7 +36,7 @@ public class RevenueCalculatorTest {
             WebElement revenueCalculator = driver.findElement(By.linkText("Revenue Calculator"));
             testUtils.safeClick(revenueCalculator, 20); // Waits for the element and clicks on it
         } catch (Exception e) {
-            System.out.println("An error occurred during testOpenRevenueCalculator: " + e.getMessage());
+            Assert.fail("Test failed due to exception: " + e.getMessage());
         }
     }
 
@@ -47,7 +47,7 @@ public class RevenueCalculatorTest {
             int sliderChangeAfterCorrectionValue = revenueCalculatorPage.getSliderInputValue();
             Assert.assertEquals(sliderChangeAfterCorrectionValue, 820, "Both the values are not equal");
         } catch (Exception e) {
-            System.out.println("An error occurred during testSliderFunctionality: " + e.getMessage());
+            Assert.fail("Test failed due to exception: " + e.getMessage());
         }
     }
 
@@ -57,10 +57,8 @@ public class RevenueCalculatorTest {
             revenueCalculatorPage.setInputBoxValue(520);
             int sliderInputBoxValue = revenueCalculatorPage.getSliderInputValue();
             Assert.assertEquals(sliderInputBoxValue, 520, "Both the values are not equal");
-
-
         } catch (Exception e) {
-            System.out.println("An error occurred during testInputBoxFunctionality: " + e.getMessage());
+            Assert.fail("Test failed due to exception: " + e.getMessage());
         }
     }
 
@@ -73,12 +71,10 @@ public class RevenueCalculatorTest {
             int sumRecurringReimbursement = revenueCalculatorPage.getRecurringReimbursement(coverageSelected);
             Assert.assertEquals(sumRecurringReimbursement,135,"Recurring Reimbursement sum mismatch");
 
-            System.out.println(revenueCalculatorPage.getHeadingText());
             Assert.assertEquals(revenueCalculatorPage.getHeadingText(),"Total Recurring Reimbursement for all Patients Per Month:","There is mismatch in header heading");
-            System.out.println(revenueCalculatorPage.getAmountText());
             Assert.assertEquals(revenueCalculatorPage.getAmountText(),"$110700","Amount mismatch ");
         } catch (Exception e) {
-            System.out.println("An error occurred during testCoverageSelection: " + e.getMessage());
+            Assert.fail("Test failed due to exception: " + e.getMessage());
         }
     }
 
