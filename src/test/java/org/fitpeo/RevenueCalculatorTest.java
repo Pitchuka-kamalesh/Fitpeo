@@ -58,8 +58,7 @@ public class RevenueCalculatorTest {
             int sliderInputBoxValue = revenueCalculatorPage.getSliderInputValue();
             Assert.assertEquals(sliderInputBoxValue, 520, "Both the values are not equal");
 
-            revenueCalculatorPage.setInputBoxValue(820);
-            revenueCalculatorPage.scrollToElement();
+
         } catch (Exception e) {
             System.out.println("An error occurred during testInputBoxFunctionality: " + e.getMessage());
         }
@@ -68,6 +67,8 @@ public class RevenueCalculatorTest {
     @Test(dependsOnMethods = "testInputBoxFunctionality")
     public void testCoverageSelection() {
         try {
+            revenueCalculatorPage.setInputBoxValue(820);
+            revenueCalculatorPage.scrollToElement();
             String[] coverageSelected = new String[]{"CPT-99091", "CPT-99453", "CPT-99454", "CPT-99474"};
             int sumRecurringReimbursement = revenueCalculatorPage.getRecurringReimbursement(coverageSelected);
             Assert.assertEquals(sumRecurringReimbursement,135,"Recurring Reimbursement sum mismatch");
