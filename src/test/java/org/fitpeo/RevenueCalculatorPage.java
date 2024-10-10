@@ -65,6 +65,7 @@ public class RevenueCalculatorPage {
         action.clickAndHold(sliderInput).moveByOffset(activalOffSet, 0).perform();
         int sliderChangeValue = Integer.parseInt(testUtils.getAttribute(sliderInput, "value", 10));
         int correction = Math.abs(sliderSetValue - sliderChangeValue);
+        System.out.println(correction);
         for (int keyPress = 0; keyPress < correction; keyPress++) {
             action.sendKeys(Keys.ARROW_RIGHT).build().perform();
         }
